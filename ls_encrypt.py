@@ -1,11 +1,20 @@
+# Importando dependências
 import os
 from cryptography.fernet import Fernet
 
+# Definindo funções
 def imprime_logo():
     logo = open("logo.txt")
     print()
     print(logo.read())
+    logo.close()
     print()
+# Esta funcao não só pode parecer estúpida, como é. Mas é apenas para deixar claro onde haverá uma quebra de linha
+def quebraLinha():
+    print()
+# Função para entradas do usuário
+def terminal():
+    input("lock@snake:~$ ")
 
 #Imprime o logo do Lock Snake
 imprime_logo()
@@ -13,33 +22,37 @@ imprime_logo()
 # Imprime informações sobre o desenvolvedor
 print("Desenvolvedor: Henrique Sebastião.")
 print("https://github.com/henriquesebastiao")
-print()
+quebraLinha()
 
 operacao = 0
+operacoes_possiveis = [1, 2]
 
-while operacao == 0 or operacao != 1 or operacao != 2:
+while operacao not in operacoes_possiveis:
     print("O que você deseja fazer hoje?")
     print("1 - Criptografar arquivos")
     print("2 - Descriptografar arquivos")
-    print()
+    quebraLinha()
 
-    operacao = int(input("lock@snake:~$ "))
+    operacao = int(terminal())
     
-    if operacao == 0 or operacao != 1 or operacao != 2:
-        print()
+    if operacao not in operacoes_possiveis:
+        quebraLinha()
         print("Essa opção não existe :|")
         print("Por favor, tente novamente!")
+        quebraLinha()
     else:
+        quebraLinha()
         continue
 
 if operacao == 1:
     print("Então quer dizer que você quer tornar alguns arquivos inacessíveis...")
     print("Para isso preciso que me informe algumas informações.")
+    quebraLinha()
     
     # -> CONTINUAR AQUI!
     
     # Pede ao usuário o caminho diretório em que estão os arquivos a serem criptografados
-    diretorio_criptografar = input("lock@snake:~$ ")
+    diretorio_criptografar = terminal()
 
     # Pede para o usuário o caminho do diretório no qual deseja salvar a chave para descriptografia dos arquivos
     # Muda para o diretório em que ficará a chave
