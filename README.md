@@ -6,10 +6,5 @@
    dBP    dB'.BP dBP    dBBBBP'     `BBBBb  dBP dBP  dBP BB   dBBBBP' dBBBBP    
   dBP    dB'.BP dBP    dBP BB          dBP dBP dBP  dBP  BB  dBP BB  dBP      
  dBBBBP dBBBBP dBBBBP dBP dB'     dBBBBP' dBP dBP  dBBBBBBB dBP dB' dBBBBBP
-<<<<<<< HEAD
 
- #### Desenvolvedor: Henrique Sebastião.
-=======
-```
- #### Autor: Henrique Sebastião.
->>>>>>> 7cdbbfd33e4707a4d4ef29395b15c4401eed496e
+#### Desenvolvedor: Henrique Sebastião
