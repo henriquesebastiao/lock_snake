@@ -6,4 +6,4 @@
   dBP    dB'.BP dBP    dBP BB          dBP dBP dBP  dBP  BB  dBP BB  dBP      
  dBBBBP dBBBBP dBBBBP dBP dB'     dBBBBP' dBP dBP  dBBBBBBB dBP dB' dBBBBBP
 
- ### Autor: Henrique Sebastião.
+ #### Desenvolvedor: Henrique Sebastião.
