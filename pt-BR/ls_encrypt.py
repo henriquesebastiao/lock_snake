@@ -56,7 +56,7 @@ if operacao == 1:
     print("Exemplo: C:"+"\u005c"+"Users"+"\u005c"+"usuario_nome"+"\u005c"+"Documentos"+"\u005c"+"Arquivos")
     quebraLinha()
     diretorio_criptografar = input("lock@snake:~$ ")
-    print()
+    quebraLinha()
 
     # Pede para o usuário o caminho do diretório no qual deseja salvar a chave para descriptografia dos arquivos
     # Muda para o diretório em que ficará a chave
@@ -101,4 +101,57 @@ if operacao == 1:
         quebraLinha()
         print("\033[0;32mArquivos criptografados com sucesso!\033[m")
     else:
+        print("\033[0;33mOperação cancelada!0\033[m")
+
+elif operacao == 2:
+    print("Então quer dizer que você quer tornar alguns arquivos acessíveis novamente...")
+    print("Para isso preciso que me informe algumas informações")
+    quebraLinha()
+    
+    # Solicitando o caminho do arquivo
+    print("Primeiro informe o caminho do diretório que contém os arquivos para descriptografar")
+    print("Exemplo: C:"+"\u005c"+"Users"+"\u005c"+"usuario_nome"+"\u005c"+"Documentos"+"\u005c"+"Arquivos")
+    quebraLinha()
+    diretorio_descriptografar = input("lock@snake:~$ ")
+    quebraLinha()
+
+    # Pede para o usuário o caminho do diretório no qual está a chave para descriptografia dos arquivos
+    # Muda para o diretório em que ficará a chave
+    print("Informe o caminho do diretório no qual está a chave para descriptografia dos arquivos: ")
+    print("Exemplo: C:"+"\u005c"+"Users"+"\u005c"+"usuario_nome"+"\u005c"+"Documentos"+"\u005c"+"Chaves")
+    quebraLinha()
+    diretorio_chave = input("lock@snake:~$ ")
+    
+    # Solicitando ao usuário se ele realmenter quer continuar
+    quebraLinha()
+    print("\033[0;31mAPÓS DESCRIPTOGRAFAR OS ARQUIVOS, ELES PODERÃO SER ACESSADOS SEM A CHAVE!\033[m")
+    quebraLinha()
+    CONFIRMACAO = input("Você deseja continuar? [s/n]: ")
+    
+    if CONFIRMACAO == "s" or CONFIRMACAO == "S":
+        # Muda para o diretório da chave
+        os.chdir(diretorio_chave)
+        # Lê a chave de descriptografia
+        with open("chave.key", "rb") as chave:
+            key = chave.read()
+
+        # Muda para o diretório dos arquivos que seram criptografados
+        os.chdir(diretorio_descriptografar)
+        files = []
+
+        for file in os.listdir():
+            if file == "ls_encrypt.py" or file == "chave.key":
+                continue
+            if os.path.isfile(file):
+                files.append(file)
+        for file in files:
+            with open(file, "rb") as arquivo:
+                conteudo = arquivo.read()
+            conteudo_decrypted = Fernet(key).decrypt(conteudo)
+            with open(file, 'wb') as arquivo:
+                arquivo.write(conteudo_decrypted)
+        quebraLinha()
+        print("\033[0;32mArquivos descriptografados com sucesso!\033[m")
+    else:
+        quebraLinha()
         print("\033[0;33mOperação cancelada!0\033[m")
