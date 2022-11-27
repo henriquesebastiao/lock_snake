@@ -4,23 +4,25 @@ from cryptography.fernet import Fernet
 
 # Definindo funções
 def imprime_logo():
-    logo = open("logo.txt")
     print()
-    print(logo.read())
-    logo.close()
+
+    print("\033[0;34m     dBP    dBBBBP dBBBP  dBP dBP   \033[m"+"\033[0;33m.dBBBBP   dBBBBb   dBBb     dBP dBP dBBBBBP\033[m")
+    print("\033[0;34m    dBp    dB'.BP dBP    dBP.d8P    \033[m"+"\033[0;33mBP       dBP dBP  dBPBB    dBP.d8P dBB\033[m")
+    print("\033[0;34m   dBP    dB'.BP dBP    dBBBBP'     \033[m"+"\033[0;33m`BBBBb  dBP dBP  dBP BB   dBBBBP' dBBBBP\033[m")
+    print("\033[0;34m  dBP    dB'.BP dBP    dBP BB          \033[m"+"\033[0;33mdBP dBP dBP  dBP  BB  dBP BB  dBP\033[m")
+    print("\033[0;34m dBBBBP dBBBBP dBBBBP dBP dB'     \033[m"+"\033[0;33mdBBBBP' dBP dBP  dBBBBBBB dBP dB' dBBBBBP\033[m")
+
     print()
 # Esta funcao não só pode parecer estúpida, como é. Mas é apenas para deixar claro onde haverá uma quebra de linha
 def quebraLinha():
     print()
-# Função para entradas do usuário
-def terminal():
-    input("lock@snake:~$ ")
 
 #Imprime o logo do Lock Snake
 imprime_logo()
 
 # Imprime informações sobre o desenvolvedor
-print("Desenvolvedor: Henrique Sebastião.")
+print("Lock Snake - Versão 0.1")
+print("Desenvolvido por: Henrique Sebastião")
 print("https://github.com/henriquesebastiao")
 quebraLinha()
 
@@ -33,7 +35,7 @@ while operacao not in operacoes_possiveis:
     print("2 - Descriptografar arquivos")
     quebraLinha()
 
-    operacao = int(terminal())
+    operacao = int(input("lock@snake:~$ "))
     
     if operacao not in operacoes_possiveis:
         quebraLinha()
@@ -44,7 +46,7 @@ while operacao not in operacoes_possiveis:
         quebraLinha()
         continue
 
-if operacao == 1:
+if operacao == "1":
     print("Então quer dizer que você quer tornar alguns arquivos inacessíveis...")
     print("Para isso preciso que me informe algumas informações.")
     quebraLinha()
@@ -52,7 +54,7 @@ if operacao == 1:
     # -> CONTINUAR AQUI!
     
     # Pede ao usuário o caminho diretório em que estão os arquivos a serem criptografados
-    diretorio_criptografar = terminal()
+    diretorio_criptografar = int(input("lock@snake:~$ "))
 
     # Pede para o usuário o caminho do diretório no qual deseja salvar a chave para descriptografia dos arquivos
     # Muda para o diretório em que ficará a chave
@@ -60,7 +62,7 @@ if operacao == 1:
     files = []
 
     # Gera e salva a chave de descriptografia
-    key = fernet.generate_key()
+    key = Fernet.generate_key()
     with open("chave.key", "wb") as chave:
         chave.write(key)
 
